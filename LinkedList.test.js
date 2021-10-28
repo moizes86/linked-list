@@ -131,7 +131,6 @@ describe("#Removes last element", () => {
 //
 // REMOVES AT INDEX
 describe("#Removes at index", () => {
-
   describe("index less than 0", () => {
     test("should not remove", () => {
       const ll = LinkedList.fromValues(10, 20);
@@ -159,6 +158,40 @@ describe("#Removes at index", () => {
       expect(ll.head.val).toBe(10);
       expect(ll.head.next.val).toBe(30);
       expect(ll.getByIndex(2)).toBeNull();
+    });
+  });
+});
+
+//
+//
+//
+// FIND NTH LAST
+describe("#Finds nth last element", () => {
+  //
+  describe("n greater than length", () => {
+    test("should return null", () => {
+      const ll = LinkedList.fromValues(10, 20, 30);
+
+      expect(ll.nthToLast(3)).toBeNull();
+    });
+  });
+
+  //
+  describe("n is negtive", () => {
+    test("should return null", () => {
+      const ll = LinkedList.fromValues(10, 20, 30);
+      
+      expect(ll.nthToLast(-1)).toBeNull();
+    });
+  });
+  
+  //
+  describe("valid n", () => {
+    test("should return nth last element", () => {
+      const ll = LinkedList.fromValues(10, 20, 30);
+      expect(ll.nthToLast(0).val).toBe(30)
+      expect(ll.nthToLast(1).val).toBe(20)
+      expect(ll.nthToLast(2).val).toBe(10)
     });
   });
 });

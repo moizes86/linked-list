@@ -72,6 +72,25 @@ class LinkedList {
     this.length--;
   }
 
+  nthToLast(n) {
+    if (n < 0) return null;
+
+    let curr = this.head;
+    let follower = this.head;
+
+    for (let i = 0; i < n; i++) {
+      if (!curr.next) return null;
+      curr = curr.next;
+    }
+
+    while (curr.next) {
+      curr = curr.next;
+      follower = follower.next;
+    }
+
+    return follower;
+  }
+
   print() {
     this.head = this.getByIndex(0);
     let output = "";
