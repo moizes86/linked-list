@@ -180,18 +180,105 @@ describe("#Finds nth last element", () => {
   describe("n is negtive", () => {
     test("should return null", () => {
       const ll = LinkedList.fromValues(10, 20, 30);
-      
+
       expect(ll.nthToLast(-1)).toBeNull();
     });
   });
-  
+
   //
   describe("valid n", () => {
     test("should return nth last element", () => {
       const ll = LinkedList.fromValues(10, 20, 30);
-      expect(ll.nthToLast(0).val).toBe(30)
-      expect(ll.nthToLast(1).val).toBe(20)
-      expect(ll.nthToLast(2).val).toBe(10)
+      expect(ll.nthToLast(0).val).toBe(30);
+      expect(ll.nthToLast(1).val).toBe(20);
+      expect(ll.nthToLast(2).val).toBe(10);
     });
   });
 });
+
+//
+//
+//
+// DIVIDE LIST
+describe("#Divide List", () => {
+  //
+  describe("empty list", () => {
+    test("should return null", () => {
+      const ll = LinkedList.fromValues();
+
+      expect(ll.divide()).toBeNull();
+    });
+  });
+  //
+
+  describe("valid list", () => {
+    test("list with even numbers", () => {
+      const ll = LinkedList.fromValues(1, 2);
+
+      expect(ll.divide().val).toBe(1);
+    });
+    //
+    test("list with odd numbers", () => {
+      const ll = LinkedList.fromValues(1);
+
+      expect(ll.divide().val).toBe(1);
+    });
+  });
+});
+//
+//
+//
+// Cycle
+
+describe("#Cycle", () => {
+  //
+  describe("Empty List", () => {
+    test("Should return false", () => {
+      const ll = LinkedList.fromValues();
+      expect(ll.cycle()).toBe(false);
+    });
+  });
+  //
+  describe("List with no cycle", () => {
+    test("Should return false", () => {
+      const ll = LinkedList.fromValues(1, 2, 3, 4);
+      expect(ll.cycle()).toBe(false);
+    });
+  });
+  //
+  describe("List with cycle", () => {
+    test("Should return true", () => {
+      const ll = LinkedList.fromValues(1, 2, 3, 4);
+      const tail = ll.getByIndex(ll.length - 1)
+      tail.next = ll.getByIndex(1);
+
+      expect(ll.cycle()).toBe(true);
+    });
+  });
+});
+
+//
+//
+//
+// Reverse
+
+describe("#Reverse List",()=>{
+  //
+  describe("Empty list",()=>{
+    test('should return null',()=>{
+      const ll  = LinkedList.fromValues()
+      expect(ll.reverse()).toBeNull();
+    })
+  })
+  //
+  describe("One ore more nodes",()=>{
+    test('one node',()=>{
+      const ll  = LinkedList.fromValues(1)
+      expect(ll.reverse().val).toBe(1);
+    })
+    test('multiple nodes',()=>{
+      const ll  = LinkedList.fromValues(1,2,3)
+      expect(ll.reverse().val).toBe(3);
+    })
+  })
+})

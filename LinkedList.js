@@ -91,6 +91,61 @@ class LinkedList {
     return follower;
   }
 
+  divide() {
+    if (!this.head) return null;
+
+    if (!this.head.next) return this.head;
+
+    let runner = this.head.next;
+    let follower = this.head;
+
+    while (runner) {
+      runner = runner.next;
+      if (!runner) return follower;
+
+      runner = runner.next;
+      follower = follower.next;
+    }
+
+    return follower;
+  }
+
+  cycle() {
+    if (!this.head) return false;
+
+    let runner = this.head.next;
+    let follower = this.head;
+
+    while (runner) {
+      if (runner.val === follower.val) return true;
+      runner = runner.next;
+      if (!runner) return false;
+      runner = runner.next;
+      follower = follower.next;
+    }
+
+    return false;
+  }
+
+  reverse() {
+    if (!this.head) return null;
+    if (!this.head.next) return this.head;
+
+    let curr = this.head;
+    let prev = null;
+
+    while (curr) {
+      let oldNext = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = oldNext;
+    }
+
+    this.head = prev;
+
+    return prev;
+  }
+
   print() {
     this.head = this.getByIndex(0);
     let output = "";
