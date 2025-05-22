@@ -3,6 +3,8 @@ class LinkedList {
     this.head = null;
     this.length = 0;
   }
+//
+//
 
   insertAtHead(data) {
     const newNode = new Node(data, this.head);
